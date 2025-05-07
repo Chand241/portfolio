@@ -27,6 +27,11 @@
             background-color: var(--light);
             color: var(--dark);
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        body.menu-open {
+            overflow: hidden;
         }
         
         a {
@@ -122,6 +127,7 @@
             display: none;
             font-size: 24px;
             cursor: pointer;
+            z-index: 1001;
         }
      
         
@@ -132,15 +138,15 @@
             align-items: center;
             justify-content: space-between;
             background-color: white;
-            padding: 80px 60px 0 60px; /* top, right, bottom, left */
+            padding: 80px 60px 0 60px;
             position: relative;
         }
 
         .hero-content {
             max-width: 600px;
             z-index: 2;
-            margin-left: 50px; /* Added more left margin */
-            padding-right: 50px; /* Added padding to prevent text touching image */
+            margin-left: 50px;
+            padding-right: 50px;
         }
         
         .hero-content h1 {
@@ -155,7 +161,7 @@
         }
         
         .hero-content p {
-            margin-right: 20px; /* Added margin to prevent text touching image */
+            margin-right: 20px;
         }
         
         .hero-btns {
@@ -177,7 +183,7 @@
         
         .blob-frame {
             position: absolute;
-            right: 10%; /* Adjusted to give more space for text */
+            right: 10%;
             top: 50%;
             transform: translateY(-50%);
             background: var(--primary);
@@ -604,31 +610,55 @@
             .blob-frame {
                 width: 300px;
                 height: 300px;
-                right: 5%; /* Adjusted for smaller screens */
+                right: 5%;
             }
             
             .hero-content {
-                margin-left: 30px; /* Adjusted for smaller screens */
+                margin-left: 30px;
             }
         }
         
         @media (max-width: 768px) {
             .nav-links {
-                display: none;
-                position: absolute;
-                top: 82px;
-                left: 0;
-                width: 100%;
-                background-color: rgb(113, 191, 221);
+                position: fixed;
+                top: 80px;
+                right: -50%;
+                width: 50%;
+                height: calc(100vh - 80px);
+                background-color: #85ceed;
                 flex-direction: column;
                 align-items: center;
-                padding: 20px 0;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding-top: 30px;
+                transition: right 0.4s ease-out;
+                z-index: 999;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
             }
             
             .nav-links.active {
-                display: flex;
+                right: 0;
             }
+            
+            .nav-links a {
+                width: 100%;
+                text-align: center;
+                padding: 15px;
+                opacity: 0;
+                transform: translateX(20px);
+                transition: all 0.4s ease;
+            }
+            
+            .nav-links.active a {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            
+            /* Staggered animation for nav items */
+            .nav-links.active a:nth-child(1) { transition-delay: 0.1s; }
+            .nav-links.active a:nth-child(2) { transition-delay: 0.2s; }
+            .nav-links.active a:nth-child(3) { transition-delay: 0.3s; }
+            .nav-links.active a:nth-child(4) { transition-delay: 0.4s; }
+            .nav-links.active a:nth-child(5) { transition-delay: 0.5s; }
+            .nav-links.active a:nth-child(6) { transition-delay: 0.6s; }
             
             .mobile-menu {
                 display: block;
@@ -689,6 +719,11 @@
             .btn {
                 width: 100%;
                 text-align: center;
+            }
+            
+            .nav-links {
+                width: 70%;
+                right: -70%;
             }
         }
     </style>
@@ -969,6 +1004,7 @@
                         <h2>Academic Notes</h2>
                     </div>
                     
+                    <!-- DM Note-->
                     <div class="note-item">
                         <h4>Discrete Mathematics</h4>
                         <p>Complete notes with solved problems and important theorems</p>
@@ -979,6 +1015,7 @@
                         </div>
                     </div>
                     
+                    <!-- DS Note-->
                     <div class="note-item">
                         <h4>Data Structures</h4>
                         <p>Implementation of various data structures in C with examples</p>
@@ -988,6 +1025,7 @@
                         </div>
                     </div>
                     
+                    <!-- Algo Note-->
                     <div class="note-item">
                         <h4>Algorithms</h4>
                         <p>Important algorithms with time complexity analysis</p>
@@ -998,12 +1036,16 @@
                         </div>
                     </div>
                     
+                    <!-- OOP Note-->
                     <div class="note-item">
                         <h4>Object Oriented Programming</h4>
                         <p>C++ concepts with practical examples</p>
                         <span class="note-date">Last updated: 2 months ago</span>
                         <div class="note-downloads">
-                            <a href="OOP_Notes.pdf" download><i class="fas fa-download"></i> Complete Notes</a>
+                            <a href="OOP/OOP last night fight mid.pdf" download><i class="fas fa-download"></i>last night fight mid</a>
+                            <a href="OOP/OOP Solution_Spring2024.pdf" download><i class="fas fa-download"></i> Solution_Spring2024</a>
+                            <a href="OOP/OOP_Solution(Fall24).pdf" download><i class="fas fa-download"></i> Solution_Fall24</a>
+                            <a href="OOP/OOP_Solution(Fall2023).pdf" download><i class="fas fa-download"></i> Solution_Fall2023</a>
                         </div>
                     </div>
                 </div>
@@ -1036,7 +1078,7 @@
                 </div>
                 <div class="contact-item">
                     <i class="fab fa-linkedin"></i>
-                    <a href="https://linkedin.com/in/chandmandol" target="_blank">linkedin.com/in/chandmandol</a>
+                    <a href="https://www.linkedin.com/in/md-chand-mandol-31208a364?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">linkedin.com/in/chandmandol</a>
                 </div>
             </div>
         </div>
@@ -1048,7 +1090,7 @@
             <div class="social-links">
                 <a href="https://facebook.com/emon.islam.22" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://github.com/chandmandol" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com/in/chandmandol" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.linkedin.com/in/md-chand-mandol-31208a364?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 <a href="mailto:chandmandol26@gmail.com"><i class="fas fa-envelope"></i></a>
             </div>
             <div class="footer-links">
@@ -1065,14 +1107,27 @@
 
     <script>
         // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
+        const mobileMenuBtn = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+            
+            // Toggle menu icon
+            if (navLinks.classList.contains('active')) {
+                this.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                this.innerHTML = '<i class="fas fa-bars"></i>';
+            }
         });
 
-        // Close mobile menu when clicking a link
+        // Close menu when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
-                document.querySelector('.nav-links').classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
             });
         });
 
@@ -1127,7 +1182,7 @@
             const notesContent = document.getElementById('notesContent');
             const passwordOverlay = document.querySelector('.password-overlay');
             
-            if (password === "241" || password === "i love you") {
+            if (password === "241" || password === "cse.66") {
                 passwordOverlay.style.display = 'none';
                 notesContent.style.display = 'block';
                 sessionStorage.setItem('notesUnlocked', 'true');
@@ -1152,26 +1207,26 @@
         
         // Update note dates dynamically
         function updateNoteDates() {
-    const dates = document.querySelectorAll('.note-date');
-    const now = new Date();
-    
-    dates.forEach((date, index) => {
-        const daysAgo = [14, 30, 21, 60][index];
-        const noteDate = new Date();
-        noteDate.setDate(now.getDate() - daysAgo);
-        
-        const options = { day: 'numeric', month: 'long' };
-        const formattedDate = noteDate.toLocaleDateString('en-US', options);
-        
-        if (daysAgo === 0) {
-            date.textContent = 'Added: Today';
-        } else if (daysAgo === 1) {
-            date.textContent = 'Added: Yesterday';
-        } else {
-            date.textContent = `Added: ${formattedDate} (${daysAgo} days ago)`;
+            const dates = document.querySelectorAll('.note-date');
+            const now = new Date();
+            
+            dates.forEach((date, index) => {
+                const daysAgo = [14, 30, 21, 60][index];
+                const noteDate = new Date();
+                noteDate.setDate(now.getDate() - daysAgo);
+                
+                const options = { day: 'numeric', month: 'long' };
+                const formattedDate = noteDate.toLocaleDateString('en-US', options);
+                
+                if (daysAgo === 0) {
+                    date.textContent = 'Added: Today';
+                } else if (daysAgo === 1) {
+                    date.textContent = 'Added: Yesterday';
+                } else {
+                    date.textContent = `Added: ${formattedDate} (${daysAgo} days ago)`;
+                }
+            });
         }
-    });
-}
         
         updateNoteDates();
     </script>
