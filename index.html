@@ -507,11 +507,19 @@
         
         .note-downloads {
             display: flex;
+            flex-wrap: wrap;
             gap: 10px;
             margin-top: 10px;
         }
         
         .note-downloads a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 5px;
+
+
+            flex: 1 1 120px;
             padding: 5px 10px;
             background: var(--primary);
             color: white;
@@ -707,6 +715,8 @@
         }
         
         @media (max-width: 576px) {
+
+            
             section {
                 padding: 60px 0;
             }
